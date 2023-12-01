@@ -30,12 +30,47 @@ cum24hVol(s) =>
 				cumSum := 0
 	cumSum
 expr = syminfo.volumetype == "quote" ? volume : ( syminfo.volumetype == "base" ? price*volume : na )
+
 vol24h = request.security(syminfo.tickerid, cumVolTF, cum24hVol(expr), lookahead = barmerge.lookahead_off, currency = currency, ignore_invalid_symbol=true)
 plot(vol24h, title = "24h_vol", style = plot.style_columns)
 
+// loadtest DEX metrics
+
+loadtest1_vol24h = request.security(syminfo.tickerid, cumVolTF, cum24hVol(expr), lookahead = barmerge.lookahead_off, ignore_invalid_symbol=true)
+plot(loadtest1_vol24h, title = "loadtest1_24h_vol", style = plot.style_columns)
+
+loadtest2_vol24h = request.security(syminfo.tickerid, cumVolTF, cum24hVol(expr), lookahead = barmerge.lookahead_off, ignore_invalid_symbol=true)
+plot(loadtest2_vol24h, title = "loadtest2_24h_vol", style = plot.style_columns)
+
+loadtest3_vol24h = request.security(syminfo.tickerid, cumVolTF, cum24hVol(expr), lookahead = barmerge.lookahead_off, ignore_invalid_symbol=true)
+plot(loadtest3_vol24h, title = "loadtest3_24h_vol", style = plot.style_columns)
+
+loadtest4_vol24h = request.security(syminfo.tickerid, cumVolTF, cum24hVol(expr), lookahead = barmerge.lookahead_off, ignore_invalid_symbol=true)
+plot(loadtest4_vol24h, title = "loadtest4_24h_vol", style = plot.style_columns)
+
+loadtest5_vol24h = request.security(syminfo.tickerid, cumVolTF, cum24hVol(expr), lookahead = barmerge.lookahead_off, ignore_invalid_symbol=true)
+plot(loadtest5_vol24h, title = "loadtest5_24h_vol", style = plot.style_columns)
+
+loadtest6_vol24h = request.security(syminfo.tickerid, cumVolTF, cum24hVol(expr), lookahead = barmerge.lookahead_off, ignore_invalid_symbol=true)
+plot(loadtest6_vol24h, title = "loadtest6_24h_vol", style = plot.style_columns)
+
+loadtest7_vol24h = request.security(syminfo.tickerid, cumVolTF, cum24hVol(expr), lookahead = barmerge.lookahead_off, ignore_invalid_symbol=true)
+plot(loadtest7_vol24h, title = "loadtest7_24h_vol", style = plot.style_columns)
+
+loadtest8_vol24h = request.security(syminfo.tickerid, cumVolTF, cum24hVol(expr), lookahead = barmerge.lookahead_off, ignore_invalid_symbol=true)
+plot(loadtest8_vol24h, title = "loadtest8_24h_vol", style = plot.style_columns)
+
+loadtest9_vol24h = request.security(syminfo.tickerid, cumVolTF, cum24hVol(expr), lookahead = barmerge.lookahead_off, ignore_invalid_symbol=true)
+plot(loadtest9_vol24h, title = "loadtest9_24h_vol", style = plot.style_columns)
+
+loadtest10_vol24h = request.security(syminfo.tickerid, cumVolTF, cum24hVol(expr), lookahead = barmerge.lookahead_off, ignore_invalid_symbol=true)
+plot(loadtest10_vol24h, title = "loadtest10_24h_vol", style = plot.style_columns)
+
+// end of loadtest DEX metrics
+
 // volume in base and quote currencies
 volBase = syminfo.volumetype == "base" ? volume : ( syminfo.volumetype == "quote" and close != 0 ? volume / close : na )
-volQuote = syminfo.volumetype == "quote" ? volume : ( syminfo.volumetype == "base" ? volume * close : na ) 
+volQuote = syminfo.volumetype == "quote" ? volume : ( syminfo.volumetype == "base" ? volume * close : na )
 plot(volBase, title = "volume_base", style = plot.style_columns)
 plot(volQuote, title = "volume_quote", style = plot.style_columns)
 
